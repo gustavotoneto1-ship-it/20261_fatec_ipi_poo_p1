@@ -13,10 +13,18 @@ public class Personagem {
     Personagem() {
         System.out.println("Construindo novo personagem");
         nome = "Gustavo";
-        energia = 10;
+        energia = 2;
         fome = 0;
         sono = 0;
         mochila = new ArrayList<>();
+    }
+
+    public int getEnergia(){
+        return energia;
+    }
+
+    public ArrayList<String> getMochila() {
+        return mochila;
     }
 
     Personagem(int energia, int fome, int sono) {
