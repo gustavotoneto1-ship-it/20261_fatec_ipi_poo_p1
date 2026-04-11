@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Personagem {
@@ -10,13 +9,14 @@ public class Personagem {
     private ArrayList<String> mochila;
     private ArrayList<Musica> repertorio;
 
-    Personagem() {
+    Personagem(String nome) {
         System.out.println("Construindo novo personagem");
-        nome = "Gustavo";
-        energia = 2;
+        this.nome = nome;
+        energia = 10;
         fome = 0;
         sono = 0;
         mochila = new ArrayList<>();
+        repertorio = new ArrayList<>();
     }
 
     public int getEnergia(){
@@ -25,6 +25,22 @@ public class Personagem {
 
     public ArrayList<String> getMochila() {
         return mochila;
+    }
+
+    public ArrayList<Musica> getRepertorio() {
+        return repertorio;
+    }
+
+    public void aprenderMusica(ArrayList<Musica> disponiveis){
+        Random gerador = new Random();
+        var oQueFazer = gerador.nextInt(disponiveis.size());
+        Musica musicaEscolhida = disponiveis.get(oQueFazer);
+
+    if (!repertorio.contains(musicaEscolhida)) {
+        repertorio.add(musicaEscolhida);
+    } else {
+        System.out.println(nome + " já conhece: " + musicaEscolhida.getTitulo());
+        }
     }
 
     Personagem(int energia, int fome, int sono) {
@@ -90,7 +106,7 @@ public class Personagem {
 
     public String toString() {
         // nome: e:5, f:4, s:8
-        return String.format("%s: e:%d, f:%d, s:%d, m:%s", nome, energia, fome, sono, mochila);
+        return String.format("%s: e:%d, f:%d, s:%d, m:%s, repertorio: %s", nome, energia, fome, sono, mochila, repertorio);
     }
 
 }
