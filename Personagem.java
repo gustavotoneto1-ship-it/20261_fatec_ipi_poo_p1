@@ -10,11 +10,20 @@ public class Personagem {
     private ArrayList<Musica> repertorio;
 
     Personagem(String nome) {
-        System.out.println("Construindo novo personagem");
+        System.out.println("Construindo novos personagens");
         this.nome = nome;
         energia = 10;
         fome = 0;
         sono = 0;
+        mochila = new ArrayList<>();
+        repertorio = new ArrayList<>();
+    }
+
+    Personagem(String nome, int energia, int fome, int sono) {
+        this.nome = nome;
+        this.energia = energia;
+        this.fome = fome;
+        this.sono = sono;
         mochila = new ArrayList<>();
         repertorio = new ArrayList<>();
     }
@@ -53,7 +62,7 @@ public class Personagem {
 
     void cacar() {
         if (energia >= 2) {
-            System.out.printf("%s caçando\n", nome);
+            System.out.printf("%s cacando\n", nome);
             energia -= 2; // energia = energia - 2
             Random gerador = new Random();
             int oQueFazer = gerador.nextInt(1, 6);
