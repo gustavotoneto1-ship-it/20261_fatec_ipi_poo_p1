@@ -28,6 +28,10 @@ public class Personagem {
         repertorio = new ArrayList<>();
     }
 
+    public void setEnergia(int energia){
+        this.energia = energia;
+    }
+
     public int getEnergia(){
         return energia;
     }
@@ -111,6 +115,11 @@ public class Personagem {
         } else {
             System.out.println(nome + " sem sono");
         }
+    }
+
+    // método duelo
+    void duelo(){
+
     }
 
     public String toString() {
