@@ -46,7 +46,7 @@ public class Personagem {
 
     public void aprenderMusica(ArrayList<Musica> disponiveis){
         Random gerador = new Random();
-        var oQueFazer = gerador.nextInt(disponiveis.size());
+        var oQueFazer = gerador.nextInt(0, 10);
         Musica musicaEscolhida = disponiveis.get(oQueFazer);
 
     if (!repertorio.contains(musicaEscolhida)) {
@@ -115,11 +115,6 @@ public class Personagem {
         } else {
             System.out.println(nome + " sem sono");
         }
-    }
-
-    // método duelo
-    void duelo(){
-
     }
 
     public String toString() {

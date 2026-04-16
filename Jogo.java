@@ -5,7 +5,7 @@ public class Jogo {
     public static void main(String[] args) throws Exception {
         Personagem p1 = new Personagem("Gustavo");
 
-        Personagem p2 = new Personagem("Tico Trovador", 4, 8, 8);
+        Personagem p2 = new Personagem("Tico Trovador", 3, 8, 8);
         p2.getRepertorio().add(new Musica("No One Noticed"));
 
         ArrayList<Musica> disponiveis = new ArrayList<>();
@@ -45,7 +45,7 @@ public class Jogo {
 
             if (p2.getEnergia() > 0) {
                 System.out.printf("-------------------\n");
-                int oQueFazer2 = gerador.nextInt(1, 10);
+                int oQueFazer2 = gerador.nextInt(1, 11);
                 switch (oQueFazer2) {
                     case 1, 2:
                         p2.cacar();
@@ -62,15 +62,16 @@ public class Jogo {
                 }
             p2.aprenderMusica(disponiveis);
             }
+
             if (p1.getEnergia() > 0 && p2.getEnergia() > 0) {
                 System.out.printf("-------------------\n");
                 System.out.printf("Duelo Musical:\n");
                 int QuemDuela = gerador.nextInt(1, 3);
                 switch (QuemDuela) {
                     case 1:
-                        var EscolheMusica1 = gerador.nextInt(p1.getRepertorio().size());
-                        if (p1.getRepertorio().isEmpty()) 
+                        if (p1.getRepertorio().size() == 0) 
                         break;
+                        var EscolheMusica1 = gerador.nextInt(p1.getRepertorio().size());
                         Musica musica1 = p1.getRepertorio().get(EscolheMusica1);
                         System.out.printf("%s duela\n", p1.nome);
                         System.out.printf("Musica: %s\n", musica1.getTitulo());
@@ -85,9 +86,9 @@ public class Jogo {
                         }
                         break;
                     case 2:
-                        var EscolheMusica2 = gerador.nextInt(p2.getRepertorio().size());
-                        if (p2.getRepertorio().isEmpty()) 
+                        if (p2.getRepertorio().size() == 0) 
                         break;
+                        var EscolheMusica2 = gerador.nextInt(p2.getRepertorio().size());
                         Musica musica2 = p2.getRepertorio().get(EscolheMusica2);
                         System.out.printf("%s duela\n", p2.nome);
                         System.out.printf("Musica: %s\n", musica2.getTitulo());
@@ -103,10 +104,12 @@ public class Jogo {
                         break;
                 }
             }
+
             if (p1.getEnergia() == 0 && cont == 0) {
                 System.out.printf("O personagem %s morreu mochila:%s, %s campeão do duelo\n", p1.nome, p1.getMochila(), p2.nome);
                 cont = cont + 1;
             } 
+            
             if (p2.getEnergia() == 0 && cont == 0) {
                 System.out.printf("O personagem %s morreu mochila:%s, %s campeão do duelo\n", p2.nome, p2.getMochila(), p1.nome);
                 cont = cont + 1;
